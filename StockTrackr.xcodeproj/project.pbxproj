@@ -10,9 +10,13 @@
 		C1931177224540BD00D214A3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1931176224540BD00D214A3 /* AppDelegate.swift */; };
 		C1931179224540BF00D214A3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C1931178224540BF00D214A3 /* Assets.xcassets */; };
 		C193117C224540BF00D214A3 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = C193117A224540BF00D214A3 /* MainMenu.xib */; };
+		F27A2ACFD0C308AE65240912 /* Pods_StockTrackr.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8FA1084EAAF292041CE14CDF /* Pods_StockTrackr.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		13100107AC63D4CC92130D52 /* Pods-StockTrackr.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StockTrackr.release.xcconfig"; path = "Target Support Files/Pods-StockTrackr/Pods-StockTrackr.release.xcconfig"; sourceTree = "<group>"; };
+		25444FB0BCA76F3D34CAD9A6 /* Pods-StockTrackr.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StockTrackr.debug.xcconfig"; path = "Target Support Files/Pods-StockTrackr/Pods-StockTrackr.debug.xcconfig"; sourceTree = "<group>"; };
+		8FA1084EAAF292041CE14CDF /* Pods_StockTrackr.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StockTrackr.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C1931173224540BD00D214A3 /* StockTrackr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StockTrackr.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C1931176224540BD00D214A3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C1931178224540BF00D214A3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -26,17 +30,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F27A2ACFD0C308AE65240912 /* Pods_StockTrackr.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4A032BFB68C87411E32E211F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				8FA1084EAAF292041CE14CDF /* Pods_StockTrackr.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		C193116A224540BD00D214A3 = {
 			isa = PBXGroup;
 			children = (
 				C1931175224540BD00D214A3 /* StockTrackr */,
 				C1931174224540BD00D214A3 /* Products */,
+				E35D206838E6054C8B1C5CD2 /* Pods */,
+				4A032BFB68C87411E32E211F /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -60,6 +75,16 @@
 			path = StockTrackr;
 			sourceTree = "<group>";
 		};
+		E35D206838E6054C8B1C5CD2 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				25444FB0BCA76F3D34CAD9A6 /* Pods-StockTrackr.debug.xcconfig */,
+				13100107AC63D4CC92130D52 /* Pods-StockTrackr.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -67,9 +92,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C1931181224540BF00D214A3 /* Build configuration list for PBXNativeTarget "StockTrackr" */;
 			buildPhases = (
+				D5D10C21DECD5810301E5023 /* [CP] Check Pods Manifest.lock */,
 				C193116F224540BD00D214A3 /* Sources */,
 				C1931170224540BD00D214A3 /* Frameworks */,
 				C1931171224540BD00D214A3 /* Resources */,
+				9853DF3DAA390C1AD63B8DD9 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -124,6 +151,53 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		9853DF3DAA390C1AD63B8DD9 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-StockTrackr/Pods-StockTrackr-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-StockTrackr/Pods-StockTrackr-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D5D10C21DECD5810301E5023 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-StockTrackr-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		C193116F224540BD00D214A3 /* Sources */ = {
@@ -265,6 +339,7 @@
 		};
 		C1931182224540BF00D214A3 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 25444FB0BCA76F3D34CAD9A6 /* Pods-StockTrackr.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = StockTrackr/StockTrackr.entitlements;
@@ -284,6 +359,7 @@
 		};
 		C1931183224540BF00D214A3 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 13100107AC63D4CC92130D52 /* Pods-StockTrackr.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = StockTrackr/StockTrackr.entitlements;
