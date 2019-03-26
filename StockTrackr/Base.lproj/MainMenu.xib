@@ -18,7 +18,6 @@
                 <outlet property="statusMenu" destination="Lbq-5Y-5bk" id="n0Z-Wi-ywV"/>
             </connections>
         </customObject>
-        <arrayController mode="entity" automaticallyPreparesContent="YES" id="smF-Du-QGr"/>
         <menu id="Lbq-5Y-5bk">
             <items>
                 <menuItem title="Update" id="cB6-Dr-EgA">

@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C1206394224AD56E00E7D916 /* StockModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1206391224AD56E00E7D916 /* StockModel.swift */; };
+		C1206395224AD56E00E7D916 /* DefaultsKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1206392224AD56E00E7D916 /* DefaultsKeys.swift */; };
+		C1206396224AD56E00E7D916 /* StockService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1206393224AD56E00E7D916 /* StockService.swift */; };
 		C12698312245692800BE12C9 /* StatusMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12698302245692800BE12C9 /* StatusMenuController.swift */; };
 		C126983322456CF000BE12C9 /* StockAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C126983222456CF000BE12C9 /* StockAPI.swift */; };
 		C13B5B4F224813D600E0F34A /* PreferencesWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = C13B5B4D224813D600E0F34A /* PreferencesWindow.swift */; };
@@ -22,6 +25,9 @@
 		13100107AC63D4CC92130D52 /* Pods-StockTrackr.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StockTrackr.release.xcconfig"; path = "Target Support Files/Pods-StockTrackr/Pods-StockTrackr.release.xcconfig"; sourceTree = "<group>"; };
 		25444FB0BCA76F3D34CAD9A6 /* Pods-StockTrackr.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StockTrackr.debug.xcconfig"; path = "Target Support Files/Pods-StockTrackr/Pods-StockTrackr.debug.xcconfig"; sourceTree = "<group>"; };
 		8FA1084EAAF292041CE14CDF /* Pods_StockTrackr.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StockTrackr.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C1206391224AD56E00E7D916 /* StockModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StockModel.swift; sourceTree = "<group>"; };
+		C1206392224AD56E00E7D916 /* DefaultsKeys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultsKeys.swift; sourceTree = "<group>"; };
+		C1206393224AD56E00E7D916 /* StockService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StockService.swift; sourceTree = "<group>"; };
 		C12698302245692800BE12C9 /* StatusMenuController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusMenuController.swift; sourceTree = "<group>"; };
 		C126983222456CF000BE12C9 /* StockAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockAPI.swift; sourceTree = "<group>"; };
 		C13B5B4D224813D600E0F34A /* PreferencesWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesWindow.swift; sourceTree = "<group>"; };
@@ -81,6 +87,9 @@
 				C12698302245692800BE12C9 /* StatusMenuController.swift */,
 				C1931178224540BF00D214A3 /* Assets.xcassets */,
 				C193117A224540BF00D214A3 /* MainMenu.xib */,
+				C1206392224AD56E00E7D916 /* DefaultsKeys.swift */,
+				C1206391224AD56E00E7D916 /* StockModel.swift */,
+				C1206393224AD56E00E7D916 /* StockService.swift */,
 				C126983222456CF000BE12C9 /* StockAPI.swift */,
 				C193117D224540BF00D214A3 /* Info.plist */,
 				C193117E224540BF00D214A3 /* StockTrackr.entitlements */,
@@ -226,7 +235,10 @@
 			files = (
 				C13B5B4F224813D600E0F34A /* PreferencesWindow.swift in Sources */,
 				C126983322456CF000BE12C9 /* StockAPI.swift in Sources */,
+				C1206396224AD56E00E7D916 /* StockService.swift in Sources */,
+				C1206394224AD56E00E7D916 /* StockModel.swift in Sources */,
 				C12698312245692800BE12C9 /* StatusMenuController.swift in Sources */,
+				C1206395224AD56E00E7D916 /* DefaultsKeys.swift in Sources */,
 				C1931177224540BD00D214A3 /* AppDelegate.swift in Sources */,
 				C18993DE2249C58B0038A28D /* StockTrackr.xcdatamodeld in Sources */,
 			);

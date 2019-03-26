@@ -1,16 +1,20 @@
 PODS:
   - SwiftyJSON (4.2.0)
+  - SwiftyUserDefaults (4.0.0-beta.2)
 
 DEPENDENCIES:
   - SwiftyJSON (~> 4.0)
+  - SwiftyUserDefaults (= 4.0.0-beta.2)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - SwiftyJSON
+    - SwiftyUserDefaults
 
 SPEC CHECKSUMS:
   SwiftyJSON: c4bcba26dd9ec7a027fc8eade48e2c911f229e96
+  SwiftyUserDefaults: 39ec70433f22f3052a64bc5fbfb34f46932b8bf1
 
-PODFILE CHECKSUM: 804853647233cd24040312d0313bd424f5ee93eb
+PODFILE CHECKSUM: dd62c65e581ae50aaeb6467d27b5d0c3b9798b2b
 
 COCOAPODS: 1.6.1
