@@ -21,16 +21,14 @@
         <menu id="Lbq-5Y-5bk">
             <items>
                 <menuItem isSeparatorItem="YES" id="ZDd-pI-bKQ"/>
-                <menuItem title="Preferences..." id="R0y-9O-7Ot">
-                    <modifierMask key="keyEquivalentModifierMask" control="YES"/>
+                <menuItem title="Preferences..." keyEquivalent="," id="R0y-9O-7Ot">
                     <connections>
                         <action selector="preferencesClicked:" target="uCH-QN-GS5" id="Ol1-iD-mc9"/>
                     </connections>
                 </menuItem>
-                <menuItem title="Quit" id="eoL-9i-PpO">
-                    <modifierMask key="keyEquivalentModifierMask"/>
+                <menuItem title="Quit" keyEquivalent="q" id="eoL-9i-PpO">
                     <connections>
-                        <action selector="quitClicked:" target="uCH-QN-GS5" id="sze-lc-Yhc"/>
+                        <action selector="quitClicked:" target="uCH-QN-GS5" id="jQu-GT-gIC"/>
                     </connections>
                 </menuItem>
             </items>

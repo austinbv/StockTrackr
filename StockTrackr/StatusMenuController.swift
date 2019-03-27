@@ -11,7 +11,6 @@ import SwiftyUserDefaults
 
 class StatusMenuController: NSObject, PreferencesWindowDelegate {
     
-    @IBOutlet weak var updatedTIme: NSMenuItem!
     let iexService = IEXService()
     var preferencesWindow : PreferencesWindow!
     var timer: Timer?

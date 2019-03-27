@@ -43,6 +43,7 @@ struct StockPresenter {
     }
     
     var color: NSColor {
-        return stock.isUp ? .green : .red
+        return stock.isUp ? NSColor(deviceRed: 0, green: 1, blue: 0, alpha: 0.5) : NSColor(deviceRed: 1, green: 0.2, blue: 0, alpha: 0.85)
     }
 }
+
