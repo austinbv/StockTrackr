@@ -1,5 +1,5 @@
 //
-//  StockAPI.swift
+//  IEXService.swift
 //  StockTrackr
 //
 //  Created by Austin Vance on 3/22/19.
@@ -9,8 +9,8 @@
 import Cocoa
 import SwiftyJSON
 
-class StockAPI: NSObject {    
-    func fetchSymbol(_ symbol: String, success: @escaping (JSON) -> Void) {
+class IEXService: NSObject {    
+    func fetchSymbol(_ symbol: String, success: @escaping (Stock) -> Void) {
         let session = URLSession.shared
         let url = URL(string: "https://api.iextrading.com/1.0/stock/\(symbol)/quote")
         let task = session.dataTask(with: url!) { data, response, err in
@@ -22,12 +22,14 @@ class StockAPI: NSObject {
                 switch httpResponse.statusCode {
                 case 200:
                     let json = JSON(data!)
-                    
-                    success(json)
-                    
-//                    if let dataString = String(data: data!, encoding: .utf8) {
-//                        NSLog(dataString)
-//                    }
+
+                    success(
+                        Stock(
+                            symbol: json["symbol"].stringValue,
+                            price: json["latestPrice"].doubleValue,
+                            changePercent: json["changePercent"].doubleValue
+                        )
+                    )
                 default:
                     NSLog("response is %d, %@", httpResponse.statusCode, HTTPURLResponse.localizedString(forStatusCode: httpResponse.statusCode))
                     

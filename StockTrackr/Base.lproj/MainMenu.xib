@@ -20,11 +20,9 @@
         </customObject>
         <menu id="Lbq-5Y-5bk">
             <items>
-                <menuItem title="Update" id="cB6-Dr-EgA">
-                    <modifierMask key="keyEquivalentModifierMask"/>
-                </menuItem>
                 <menuItem isSeparatorItem="YES" id="ZDd-pI-bKQ"/>
-                <menuItem title="Preferences..." keyEquivalent="," id="R0y-9O-7Ot">
+                <menuItem title="Preferences..." id="R0y-9O-7Ot">
+                    <modifierMask key="keyEquivalentModifierMask" control="YES"/>
                     <connections>
                         <action selector="preferencesClicked:" target="uCH-QN-GS5" id="Ol1-iD-mc9"/>
                     </connections>

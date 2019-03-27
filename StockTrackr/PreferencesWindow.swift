@@ -7,10 +7,12 @@
 //
 
 import Cocoa
+import SwiftyUserDefaults
 
 fileprivate enum CellIds {
     static let SYMBOL = NSUserInterfaceItemIdentifier(rawValue: "SymbolsCellID")
     static let ACTIONS = NSUserInterfaceItemIdentifier(rawValue: "ActionsCellID")
+    static let PERCENT_CHANGE = NSUserInterfaceItemIdentifier(rawValue: "PercentChangeCellID")
     static let PRICE = NSUserInterfaceItemIdentifier(rawValue: "PriceCellID")
 }
 
@@ -34,14 +36,17 @@ NSWindowDelegate {
         if symbolTextField.stringValue.isEmpty {
             return
         }
-        var symbols = UserDefaults.standard.stringArray(forKey: "symbols")!
-        symbols.append(symbolTextField.stringValue.uppercased())
-        UserDefaults.standard.set(symbols, forKey: "symbols")
-        symbolTextField.stringValue = ""
-        symbolsTable.reloadData()
-        delegate?.preferencesDidUpdate()
         
-        NSLog("saved symbols: %@", UserDefaults.standard.stringArray(forKey: "symbols") ?? "Nothing there")
+        IEXService().fetchSymbol(symbolTextField.stringValue.uppercased()) { stock in
+            Defaults[.stocks].append(stock)
+            DispatchQueue.main.async {
+                self.symbolTextField.stringValue = ""
+                self.symbolsTable.reloadData()
+                self.delegate?.preferencesDidUpdate()
+            }
+            
+            
+        }
     }
     
     override func windowDidLoad() {
@@ -49,9 +54,9 @@ NSWindowDelegate {
         
         symbolsTable.delegate = self
         symbolsTable.dataSource = self
-        symbolsTable.reloadData()
-        
-        print(stockArray)
+        Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { timer in
+            self.symbolsTable.reloadData()
+        }
         
         self.symbolTextField.stringValue = UserDefaults
             .standard
@@ -63,41 +68,38 @@ NSWindowDelegate {
     }
     
     @IBAction func clicked(_ sender: NSButton) {
-        var symbols = UserDefaults.standard.stringArray(forKey: "symbols")!
-        symbols.remove(at: sender.tag)
-        UserDefaults.standard.set(symbols, forKey: "symbols")
+        Defaults[.stocks].remove(at: sender.tag)
         symbolsTable.reloadData()
-        
+        self.delegate?.preferencesDidUpdate()
     }
-    
     
 }
 
 extension PreferencesWindow: NSTableViewDataSource {
     func numberOfRows(in tableView: NSTableView) -> Int {
-        let symbols = UserDefaults.standard.stringArray(forKey: "symbols") ?? []
-        return symbols.count
+        return Defaults[.stocks].count
     }
 }
 
 extension PreferencesWindow: NSTableViewDelegate {
     func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
-        let theRow = UserDefaults.standard.stringArray(forKey: "symbols") ?? []
-        NSLog("Table Column Value: %@", (tableColumn?.identifier)!.rawValue)
+        let stock = StockPresenter(Defaults[.stocks][row])
+        
         
         switch tableColumn?.identifier {
         case CellIds.SYMBOL:
             let cell = tableView.makeView(withIdentifier: (tableColumn?.identifier)!, owner: self) as? NSTableCellView
-            cell?.textField?.stringValue = theRow[row]
+            cell?.textField?.stringValue = stock.symbol
             return cell
         case CellIds.PRICE:
             let cell = tableView.makeView(withIdentifier: (tableColumn?.identifier)!, owner: self) as? NSTableCellView
-            StockAPI().fetchSymbol(theRow[row], success: { json in
-                DispatchQueue.main.async {
-                    cell?.textField?.stringValue = String(format: "%.2f", json["latestPrice"].doubleValue)
-                    cell?.textField?.textColor = json["changePercent"].doubleValue < 0 ? .red : .green
-                }
-            })
+            cell?.textField?.stringValue = stock.price
+            cell?.textField?.textColor = stock.color
+            return cell
+        case CellIds.PERCENT_CHANGE:
+            let cell = tableView.makeView(withIdentifier: (tableColumn?.identifier)!, owner: self) as? NSTableCellView
+            cell?.textField?.stringValue = stock.changePercent
+            cell?.textField?.textColor = stock.color
             return cell
         case CellIds.ACTIONS:
             let cell = NSButton(title: "x", target: self, action: #selector(clicked(_:)))

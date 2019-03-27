@@ -7,16 +7,17 @@
 //
 
 import Cocoa
+import SwiftyUserDefaults
 
 class StatusMenuController: NSObject, PreferencesWindowDelegate {
-    let upSymbol = "▲"
-    let downSymbol = "▼"
-    let stockAPI = StockAPI()
+    
+    @IBOutlet weak var updatedTIme: NSMenuItem!
+    let iexService = IEXService()
     var preferencesWindow : PreferencesWindow!
     var timer: Timer?
+    var updateTimer: Timer?
+    var stockItems: [NSMenuItem] = []
     
-   
-    @IBOutlet weak var stockArray: NSArrayController!
     @IBOutlet weak var statusMenu: NSMenu!
     let statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
     
@@ -30,7 +31,31 @@ class StatusMenuController: NSObject, PreferencesWindowDelegate {
     
     func preferencesDidUpdate() {
         self.timer?.invalidate()
-        self.updateSymbol(0)
+        self.updateTimer?.invalidate()
+        
+        self.updateStocks()
+        self.startRotation()
+    }
+    
+    private func setStockItems() {
+        self.stockItems.forEach { item in
+            self.statusMenu.removeItem(item)
+        }
+        
+        stockItems = Defaults[.stocks].map { aStock in
+            let stock = StockPresenter(aStock)
+            
+            let coloredString = NSAttributedString(
+                string: "\(stock.symbol) \(stock.indicatorSymbol) \(stock.price) (\(stock.changePercent))",
+                attributes: [NSAttributedString.Key.foregroundColor : stock.color]
+            )
+            
+            let item = NSMenuItem()
+            item.attributedTitle = coloredString
+            statusMenu.insertItem(item, at: 0)
+            
+            return item
+        }   
     }
     
     override func awakeFromNib() {
@@ -39,33 +64,38 @@ class StatusMenuController: NSObject, PreferencesWindowDelegate {
         statusItem.button?.title = "StockTrackr..."
         statusItem.menu = statusMenu
         
-        print(stockArray)
-
-        self.updateSymbol(0)
+        self.updateStocks()
+        self.startRotation()
     }
     
-    private func updateSymbol(_ index: Int) {
-        let defaults = UserDefaults.standard
-        let symbols = defaults.stringArray(forKey: "symbols") ?? []
-
-        let i = symbols.count < index + 1 ? 0 : index
-        
-        self.stockAPI.fetchSymbol(symbols[i]) { quote in
-            let isUp = quote["changePercent"] >= 0
-            let indicator = isUp ? self.upSymbol : self.downSymbol
-            let percentChange = String(format: "%.2f", abs(quote["changePercent"].doubleValue))
-            let price = String(format: "%.2f", abs(quote["latestPrice"].doubleValue))
-            
-            DispatchQueue.main.async {
-                self.statusItem.button?.title = "\(quote["symbol"]) \(indicator) \(price) (\(percentChange))"
-                self.statusItem.button?.contentTintColor = isUp ? .green : .red
+    private func updateStocks() {
+        self.updateTimer = Timer.scheduledTimer(withTimeInterval: 5, repeats: true) { timer in
+            Defaults[.stocks].enumerated().forEach { index, stock in
+                IEXService().fetchSymbol(stock.symbol) { updated in
+                    Defaults[.stocks][index] = updated
+                }
             }
         }
+    }
+    
+    private func startRotation(_ index: Int = 0) {
+        if Defaults[.stocks].isEmpty {
+            return
+        }
         
-        let next = symbols.count == i + 1 ? 0 : i + 1
+        self.setStockItems()
         
+        let stock = StockPresenter(Defaults[.stocks][index])
+        let i = Defaults[.stocks].count < index + 1 ? 0 : index
+        
+        DispatchQueue.main.async {
+            self.statusItem.button?.title = "\(stock.symbol) \(stock.indicatorSymbol) \(stock.price) (\(stock.changePercent))"
+            self.statusItem.button?.contentTintColor = stock.color
+        }
+        
+        let next = Defaults[.stocks].count == i + 1 ? 0 : i + 1
         self.timer = Timer.scheduledTimer(withTimeInterval: 5, repeats: false, block: { timer in
-            self.updateSymbol(next)
+            self.startRotation(next)
         })
     }
 }

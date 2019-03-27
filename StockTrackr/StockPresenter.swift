@@ -1,5 +1,5 @@
 //
-//  StockService.swift
+//  StockPresenter.swift
 //  StockTrackr
 //
 //  Created by Austin Vance on 3/26/19.
@@ -7,5 +7,3 @@
 //
 
 import Foundation
-
-class SetService
