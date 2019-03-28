@@ -25,6 +25,7 @@
 		8FA1084EAAF292041CE14CDF /* Pods_StockTrackr.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StockTrackr.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C1206391224AD56E00E7D916 /* Stock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Stock.swift; sourceTree = "<group>"; };
 		C1206392224AD56E00E7D916 /* DefaultsKeys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultsKeys.swift; sourceTree = "<group>"; };
+		C120639B224C748500E7D916 /* PrivacyPolicy.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = PrivacyPolicy.md; sourceTree = "<group>"; };
 		C12698302245692800BE12C9 /* StatusMenuController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusMenuController.swift; sourceTree = "<group>"; };
 		C126983222456CF000BE12C9 /* IEXService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IEXService.swift; sourceTree = "<group>"; };
 		C13B5B4D224813D600E0F34A /* PreferencesWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesWindow.swift; sourceTree = "<group>"; };
@@ -60,6 +61,7 @@
 		C193116A224540BD00D214A3 = {
 			isa = PBXGroup;
 			children = (
+				C120639B224C748500E7D916 /* PrivacyPolicy.md */,
 				C1931175224540BD00D214A3 /* StockTrackr */,
 				C1931174224540BD00D214A3 /* Products */,
 				E35D206838E6054C8B1C5CD2 /* Pods */,
@@ -385,8 +387,9 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = org.focusedlabs.StockTrackr;
+				PRODUCT_BUNDLE_IDENTIFIER = com.focusedlabs.stocktrackr;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.2;
 			};
 			name = Debug;
@@ -406,8 +409,9 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = org.focusedlabs.StockTrackr;
+				PRODUCT_BUNDLE_IDENTIFIER = com.focusedlabs.stocktrackr;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.2;
 			};
 			name = Release;
